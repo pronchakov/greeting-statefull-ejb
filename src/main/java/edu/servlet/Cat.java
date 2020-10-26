@@ -1,23 +1,23 @@
 package edu.servlet;
 
-//import javax.persistence.Column;
-//import javax.persistence.Entity;
-//import javax.persistence.Id;
-//import javax.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
-//@Entity
-//@Table(name = "cat", schema = "public")
+@Entity
+@Table(name = "cat", schema = "public")
 public class Cat {
 
-//    @Column(name = "cat_id")
-//    @Id
+    @Column(name = "cat_id")
+    @Id
     private Long id;
 
-//    @Column(name = "name", nullable = false, length = 255)
+    @Column(name = "name", nullable = false, length = 255)
     private String name;
 
-//    @Column(name = "birth", nullable = false)
+    @Column(name = "birth", nullable = false)
     private Date birth;
 
     public Long getId() {
