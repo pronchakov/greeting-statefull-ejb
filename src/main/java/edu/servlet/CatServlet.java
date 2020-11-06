@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceUnit;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,27 +22,26 @@ public class CatServlet extends HttpServlet {
     @PersistenceUnit(unitName = "cat-unit")
     private EntityManagerFactory entityManagerFactory;
 
-    public void setEntityManager(EntityManagerFactory entityManagerFactory) {
+    public void setEntityManagerFactory(EntityManagerFactory entityManagerFactory) {
         this.entityManagerFactory = entityManagerFactory;
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-//        Cat cat = entityManager.find(Cat.class, 2L);
-//
-//        log.info("Cat id: {}, name: {}, birth: {}", cat.getId(), cat.getName(), cat.getBirth());
-
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         Cat cat = new Cat();
-        cat.setId(567L);
+        cat.setId(568L);
         cat.setName("Gingerыч");
         cat.setBirth(new Date());
 
         entityManager.getTransaction().begin();
 
         entityManager.persist(cat);
+
+        Cat catFind = entityManager.find(Cat.class, 2L);
+        log.info("Cat id: {}, name: {}, birth: {}", catFind.getId(), catFind.getName(), catFind.getBirth());
 
         entityManager.getTransaction().commit();
 
